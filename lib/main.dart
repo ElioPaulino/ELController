@@ -1,4 +1,6 @@
+import 'package:appeliolucas/view/homeempresatela.dart';
 import 'package:appeliolucas/view/hometela.dart';
+import 'package:appeliolucas/view/sobretela.dart';
 import 'package:flutter/material.dart';
 
 import 'model/usuario.dart';
@@ -13,6 +15,8 @@ void main() {
     routes: {
       '/primeira': (context) => PrimeiraTela(),
       '/home': (context) => HomeTela(),
+      '/homeempresa': (context) => HomeEmpresaTela(),
+      '/sobre': (context) => SobreTela(),
     },
     //Tema
     theme: ThemeData(
@@ -85,7 +89,11 @@ class _PrimeiraTelaState extends State<PrimeiraTela> {
                       onPressed: () {
                         var user = Usuario(txtLogin.text, txtSenha.text);
                         if (txtLogin.text == "teste") {
-                          Navigator.pushNamed(context, '/home',
+                          Navigator.pushReplacementNamed(context, '/home',
+                              arguments: user);
+                        } else if (txtLogin.text == "testeadmin") {
+                          Navigator.pushReplacementNamed(
+                              context, '/homeempresa',
                               arguments: user);
                         }
                       },

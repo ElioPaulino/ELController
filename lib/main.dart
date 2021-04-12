@@ -1,7 +1,7 @@
+import 'package:appeliolucas/view/hometela.dart';
 import 'package:flutter/material.dart';
 
 import 'model/usuario.dart';
-import 'model/view/hometela.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -34,6 +34,8 @@ class PrimeiraTela extends StatefulWidget {
 class _PrimeiraTelaState extends State<PrimeiraTela> {
   var txtLogin = TextEditingController();
   var txtSenha = TextEditingController();
+  //Atributo para identificar unicamente o formulário
+  var _formId = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,55 +44,57 @@ class _PrimeiraTelaState extends State<PrimeiraTela> {
           child: Container(
             width: double.infinity,
             padding: EdgeInsets.all(40),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(
-                  Icons.supervised_user_circle,
-                  color: Theme.of(context).primaryColor,
-                  size: 160,
-                ),
-                SizedBox(height: 20),
-                TextField(
-                  controller: txtLogin,
-                  decoration: InputDecoration(
-                    icon: Icon(Icons.person_outline),
-                    hintText: "Insira o usuário",
+            child: Form(
+              key: _formId,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(
+                    Icons.supervised_user_circle,
+                    color: Theme.of(context).primaryColor,
+                    size: 160,
                   ),
-                ),
-                SizedBox(height: 30),
-                TextField(
-                  controller: txtSenha,
-                  decoration: InputDecoration(
-                    icon: Icon(Icons.lock_outline),
-                    labelText: 'Senha',
-                  ),
-                  obscureText: true,
-                ),
-                SizedBox(height: 20),
-                Container(
-                  padding: EdgeInsets.only(top: 20),
-                  width: double.infinity,
-                  height: 70,
-                  child: ElevatedButton.icon(
-                    label: Text(
-                      'Entrar',
-                      style: TextStyle(fontSize: 24),
+                  SizedBox(height: 20),
+                  TextField(
+                    controller: txtLogin,
+                    decoration: InputDecoration(
+                      icon: Icon(Icons.person_outline),
+                      hintText: "Insira o usuário",
                     ),
-                    icon: Icon(Icons.login),
-                    onPressed: () {
-                      var user = Usuario(txtLogin.text, txtSenha.text);
-                      if (txtLogin.text == "teste") {
-                        Navigator.pushNamed(context, '/home', arguments: user);
-                      }
-                    },
                   ),
-                )
-                
-              ],
+                  SizedBox(height: 30),
+                  TextField(
+                    controller: txtSenha,
+                    decoration: InputDecoration(
+                      icon: Icon(Icons.lock_outline),
+                      labelText: 'Senha',
+                    ),
+                    obscureText: true,
+                  ),
+                  SizedBox(height: 20),
+                  Container(
+                    padding: EdgeInsets.only(top: 20),
+                    width: double.infinity,
+                    height: 70,
+                    child: ElevatedButton.icon(
+                      label: Text(
+                        'Entrar',
+                        style: TextStyle(fontSize: 24),
+                      ),
+                      icon: Icon(Icons.login),
+                      onPressed: () {
+                        var user = Usuario(txtLogin.text, txtSenha.text);
+                        if (txtLogin.text == "teste") {
+                          Navigator.pushNamed(context, '/home',
+                              arguments: user);
+                        }
+                      },
+                    ),
+                  )
+                ],
+              ),
             ),
           ),
         ));
   }
 }
-

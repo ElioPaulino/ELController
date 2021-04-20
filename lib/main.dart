@@ -1,4 +1,5 @@
 import 'package:appeliolucas/view/homeempresatela.dart';
+import 'package:appeliolucas/view/homefuncionariotela.dart';
 import 'package:appeliolucas/view/hometela.dart';
 import 'package:appeliolucas/view/sobretela.dart';
 import 'package:appeliolucas/view/cadastrotela.dart';
@@ -19,6 +20,7 @@ void main() {
       '/homeempresa': (context) => HomeEmpresaTela(),
       '/sobre': (context) => SobreTela(),
       '/cadastro': (context) => CadastroTela(),
+      '/homefuncionario': (context) => HomeFuncionarioTela(),
     },
     //Tema
     theme: ThemeData(
@@ -99,12 +101,16 @@ class _PrimeiraTelaState extends State<PrimeiraTela> {
                       icon: Icon(Icons.login),
                       onPressed: () {
                         var user = Usuario(txtLogin.text, txtSenha.text);
-                        if (txtLogin.text == "teste") {
+                        if (txtLogin.text == "testecliente") {
                           Navigator.pushReplacementNamed(context, '/home',
                               arguments: user);
-                        } else if (txtLogin.text == "testeadmin") {
+                        } else if (txtLogin.text == "testeempresa") {
                           Navigator.pushReplacementNamed(
                               context, '/homeempresa',
+                              arguments: user);
+                        } else if (txtLogin.text == "testefuncionario") {
+                          Navigator.pushReplacementNamed(
+                              context, '/homefuncionario',
                               arguments: user);
                         }
                       },

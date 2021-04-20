@@ -46,91 +46,87 @@ class _PrimeiraTelaState extends State<PrimeiraTela> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Theme.of(context).backgroundColor,
-        body: SingleChildScrollView(
-          child: Container(
-            width: double.infinity,
-            padding: EdgeInsets.all(40),
-            child: Form(
-              key: _formId,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Image.asset('lib/imagens/logo1.jpg'),
-                  //
-                  SizedBox(height: 30),
-                  TextField(
-                    controller: txtLogin,
-                    decoration: InputDecoration(
-                      icon: Icon(Icons.person_outline, color: Colors.yellow),
-                      labelText: 'Insira o Usuário',
-                      labelStyle: TextStyle(color: Colors.yellow),
-                    ),
-                    style: TextStyle(color: Colors.white),
+      backgroundColor: Theme.of(context).backgroundColor,
+      body: SingleChildScrollView(
+        child: Container(
+          width: double.infinity,
+          padding: EdgeInsets.all(40),
+          child: Form(
+            key: _formId,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.asset('lib/imagens/logo1.jpg'),
+                //
+                SizedBox(height: 30),
+                TextField(
+                  controller: txtLogin,
+                  decoration: InputDecoration(
+                    icon: Icon(Icons.person_outline, color: Colors.yellow),
+                    labelText: 'Insira o Usuário',
+                    labelStyle: TextStyle(color: Colors.yellow),
                   ),
-                  SizedBox(height: 30),
-                  TextField(
-                    controller: txtSenha,
-                    decoration: InputDecoration(
-                      icon: Icon(Icons.lock_outline, color: Colors.yellow),
-                      labelText: 'Senha',
-                      labelStyle: TextStyle(color: Colors.yellow),
-                     
-                    ),
-                    style: TextStyle(color: Colors.white),
-                    obscureText: true,
+                  style: TextStyle(color: Colors.white),
+                ),
+                SizedBox(height: 30),
+                TextField(
+                  controller: txtSenha,
+                  decoration: InputDecoration(
+                    icon: Icon(Icons.lock_outline, color: Colors.yellow),
+                    labelText: 'Senha',
+                    labelStyle: TextStyle(color: Colors.yellow),
                   ),
-                  SizedBox(height: 20),
-                  Container(
-                    padding: EdgeInsets.only(top: 20),
-                    width: double.infinity,
-                    height: 70,
-                    child: ElevatedButton.icon(
-                      style: ButtonStyle(backgroundColor:MaterialStateProperty.resolveWith<Color>(
-                        (Set<MaterialState> states){
-                          if(states.contains(MaterialState.pressed))
+                  style: TextStyle(color: Colors.white),
+                  obscureText: true,
+                ),
+                SizedBox(height: 20),
+                Container(
+                  padding: EdgeInsets.only(top: 20),
+                  width: double.infinity,
+                  height: 70,
+                  child: ElevatedButton.icon(
+                    style: ButtonStyle(backgroundColor:
+                        MaterialStateProperty.resolveWith<Color>(
+                      (Set<MaterialState> states) {
+                        if (states.contains(MaterialState.pressed))
                           return Colors.yellow[700];
-                          return Colors.yellow[600];
-                        }, 
-                      )),
-                      label: Text(
-                        'Entrar',
-                        style: TextStyle(fontSize: 24),
-                      ),
-                      icon: Icon(Icons.login),
-                      onPressed: () {
-                        var user = Usuario(txtLogin.text, txtSenha.text);
-                        if (txtLogin.text == "testecliente") {
-                          Navigator.pushReplacementNamed(context, '/home',
-                              arguments: user);
-                        } else if (txtLogin.text == "testeempresa") {
-                          Navigator.pushReplacementNamed(
-                              context, '/homeempresa',
-                              arguments: user);
-                        } else if (txtLogin.text == "testefuncionario") {
-                          Navigator.pushReplacementNamed(
-                              context, '/homefuncionario',
-                              arguments: user);
-                        }
+                        return Colors.yellow[600];
                       },
-                    ),  
-                  )
-
-                ],
-              ),
+                    )),
+                    label: Text(
+                      'Entrar',
+                      style: TextStyle(fontSize: 24),
+                    ),
+                    icon: Icon(Icons.login),
+                    onPressed: () {
+                      var user = Usuario(txtLogin.text, txtSenha.text);
+                      if (txtLogin.text == "testecliente") {
+                        Navigator.pushReplacementNamed(context, '/home',
+                            arguments: user);
+                      } else if (txtLogin.text == "testeempresa") {
+                        Navigator.pushReplacementNamed(context, '/homeempresa',
+                            arguments: user);
+                      } else if (txtLogin.text == "testefuncionario") {
+                        Navigator.pushReplacementNamed(
+                            context, '/homefuncionario',
+                            arguments: user);
+                      }
+                    },
+                  ),
+                )
+              ],
             ),
-        
           ),
-
         ),
-        floatingActionButton: FloatingActionButton.extended(
-          onPressed:(){
-              Navigator.pushNamed(context, '/cadastro');
-          },
-          icon: Icon(Icons.add),
-          label: Text('Cadastrar'),
-          backgroundColor: Colors.yellow,
-        ),
-        );
+      ),
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () {
+          Navigator.pushNamed(context, '/cadastro');
+        },
+        icon: Icon(Icons.add),
+        label: Text('Cadastrar'),
+        backgroundColor: Colors.yellow,
+      ),
+    );
   }
 }

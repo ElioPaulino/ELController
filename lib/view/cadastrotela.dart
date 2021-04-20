@@ -37,6 +37,8 @@ class _CadastroTelaState extends State<CadastroTela> {
                   TextField(
                     controller: txtNome,
                     decoration: InputDecoration(
+                      focusedBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(color: Colors.yellow)),
                       labelText: "Informe o nome",
                       labelStyle: TextStyle(color: Colors.white),
                     ),
@@ -72,6 +74,8 @@ class _CadastroTelaState extends State<CadastroTela> {
                   TextField(
                     controller: txtCpfCnpj,
                     decoration: InputDecoration(
+                      focusedBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(color: Colors.yellow)),
                         labelText: 'Informe Cpf ou Cnpj',
                         labelStyle: TextStyle(color: Colors.white)),
                         style: TextStyle(color: Colors.white),
@@ -80,6 +84,8 @@ class _CadastroTelaState extends State<CadastroTela> {
                   TextField(
                     controller: txtTelefone,
                     decoration: InputDecoration(
+                      focusedBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(color: Colors.yellow)),
                       labelText: 'Informe o telefone',
                       labelStyle: TextStyle(color: Colors.white),
                     ),
@@ -89,6 +95,8 @@ class _CadastroTelaState extends State<CadastroTela> {
                   TextField(
                     controller: txtCelular,
                     decoration: InputDecoration(
+                      focusedBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(color: Colors.yellow)),
                       labelText: 'Informe o celular',
                       labelStyle: TextStyle(color: Colors.white),
                     ),
@@ -98,6 +106,8 @@ class _CadastroTelaState extends State<CadastroTela> {
                   TextField(
                     controller: txtLogin,
                     decoration: InputDecoration(
+                      focusedBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(color: Colors.yellow)),
                       labelText: 'Informe o login',
                       labelStyle: TextStyle(color: Colors.white),
                     ),
@@ -107,6 +117,8 @@ class _CadastroTelaState extends State<CadastroTela> {
                   TextField(
                     controller: txtSenha,
                     decoration: InputDecoration(
+                      focusedBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(color: Colors.yellow)),
                       labelText: 'Informe a senha',
                       labelStyle: TextStyle(color: Colors.white),
                     ),
@@ -117,6 +129,8 @@ class _CadastroTelaState extends State<CadastroTela> {
                   TextField(
                     controller: txtSenhaConf,
                     decoration: InputDecoration(
+                      focusedBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(color: Colors.yellow)),
                       labelText: 'Informe a senha novamente',
                       labelStyle: TextStyle(color: Colors.white),
                     ),

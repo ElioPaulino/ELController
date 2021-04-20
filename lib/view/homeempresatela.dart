@@ -1,5 +1,6 @@
 import 'package:appeliolucas/model/usuario.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class HomeEmpresaTela extends StatefulWidget {
   @override
@@ -7,6 +8,7 @@ class HomeEmpresaTela extends StatefulWidget {
 }
 
 class _HomeEmpresaTelaState extends State<HomeEmpresaTela> {
+  var txtNumber = TextEditingController();
   @override
   Widget build(BuildContext context) {
     Usuario user = ModalRoute.of(context).settings.arguments;
@@ -67,15 +69,15 @@ class _HomeEmpresaTelaState extends State<HomeEmpresaTela> {
               'Bem vindo ${user.login}!',
               style: TextStyle(
                   fontSize: 25,
-                  color: Colors.black,
+                  color: Colors.white,
                   fontStyle: FontStyle.italic),
             ),
             Icon(Icons.menu, size: 120, color: Colors.grey),
             SizedBox(height: 40),
             ListTile(
-              trailing: Icon(Icons.build, color: Colors.yellow),
-              title: Text('Configuração',
-                  style: TextStyle(fontSize: 26, color: Colors.white)),
+              trailing: Icon(Icons.assignment_ind, color: Colors.yellow),
+              title: Text('Cadastro funcionario',
+                  style: TextStyle(fontSize: 26, color: Colors.yellow)),
               subtitle: Text('Configure o seu perfil. ',
                   style: TextStyle(
                       fontSize: 14,
@@ -84,6 +86,88 @@ class _HomeEmpresaTelaState extends State<HomeEmpresaTela> {
               onTap: () {
                 print('item pressionado');
                 Navigator.pushNamed(context, '/list1');
+              },
+              hoverColor: Colors.yellow,
+            ),
+            ListTile(
+              trailing: Icon(Icons.assignment_turned_in, color: Colors.yellow),
+              title: Text('alterar cadastro',
+                  style: TextStyle(fontSize: 26, color: Colors.yellow)),
+              subtitle: Text('Configure o seu perfil. ',
+                  style: TextStyle(
+                      fontSize: 14,
+                      color: Colors.white,
+                      fontStyle: FontStyle.italic)),
+              onTap: () {
+                print('item pressionado');
+                Navigator.pushNamed(context, '/list1');
+              },
+              hoverColor: Colors.yellow,
+            ),
+            ListTile(
+              trailing: Icon(Icons.emoji_people_sharp, color: Colors.yellow),
+              title: Text('Limite de pessoas',
+                  style: TextStyle(fontSize: 26, color: Colors.yellow)),
+              subtitle: Text('Configure o seu perfil. ',
+                  style: TextStyle(
+                      fontSize: 14,
+                      color: Colors.white,
+                      fontStyle: FontStyle.italic)),
+              onTap: () async {
+                await showDialog(
+                    context: context,
+                    builder: (context) {
+                      return AlertDialog(
+                        title: Text('Atualizar o limite de pessoas',
+                            style: TextStyle(fontSize: 12)),
+                        content: TextField(
+                          keyboardType: TextInputType.number,
+                          inputFormatters: <TextInputFormatter>[
+                            WhitelistingTextInputFormatter.digitsOnly
+                          ],
+                          controller: txtNumber,
+                          style: TextStyle(fontSize: 18),
+                          decoration: InputDecoration(
+                              hintText: 'Informe o limite de pessoas'),
+                        ),
+                        actions: [
+                          SizedBox(
+                            width: 120.0,
+                            child: RaisedButton(
+                              onPressed: () {
+                                txtNumber.clear();
+                                ScaffoldMessenger.of(context)
+                                    .showSnackBar(SnackBar(
+                                  content:
+                                      Text('Limite de pessoas atualizadas.'),
+                                  duration: Duration(seconds: 2),
+                                  backgroundColor: Colors.yellow,
+                                ));
+                                Navigator.pop(context);
+                              },
+                              child: Text(
+                                "salvar",
+                                style: TextStyle(color: Colors.white),
+                              ),
+                              color: Colors.yellow,
+                            ),
+                          ),
+                          SizedBox(
+                            width: 120.0,
+                            child: RaisedButton(
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                              child: Text(
+                                "Cancelar",
+                                style: TextStyle(color: Colors.white),
+                              ),
+                              color: Colors.yellow,
+                            ),
+                          ),
+                        ],
+                      );
+                    });
               },
               hoverColor: Colors.yellow,
             ),

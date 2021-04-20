@@ -1,6 +1,7 @@
 import 'package:appeliolucas/view/homeempresatela.dart';
 import 'package:appeliolucas/view/hometela.dart';
 import 'package:appeliolucas/view/sobretela.dart';
+import 'package:appeliolucas/view/cadastrotela.dart';
 import 'package:flutter/material.dart';
 
 import 'model/usuario.dart';
@@ -17,6 +18,7 @@ void main() {
       '/home': (context) => HomeTela(),
       '/homeempresa': (context) => HomeEmpresaTela(),
       '/sobre': (context) => SobreTela(),
+      '/cadastro': (context) => CadastroTela(),
     },
     //Tema
     theme: ThemeData(
@@ -53,7 +55,7 @@ class _PrimeiraTelaState extends State<PrimeiraTela> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Image.network('lib/imagens/logo1.jpg'),
+                  Image.asset('lib/imagens/logo1.jpg'),
                   //
                   SizedBox(height: 30),
                   TextField(
@@ -104,12 +106,24 @@ class _PrimeiraTelaState extends State<PrimeiraTela> {
                               arguments: user);
                         }
                       },
-                    ),
+                    ),  
                   )
+
                 ],
               ),
             ),
+        
           ),
-        ));
+
+        ),
+        floatingActionButton: FloatingActionButton.extended(
+          onPressed:(){
+              Navigator.pushNamed(context, '/cadastro');
+          },
+          icon: Icon(Icons.add),
+          label: Text('Cadastrar Pessoas'),
+          backgroundColor: Colors.yellow,
+        ),
+        );
   }
 }

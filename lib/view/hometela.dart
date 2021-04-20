@@ -25,7 +25,7 @@ class _HomeTelaState extends State<HomeTela> {
           padding: EdgeInsets.zero,
           children: <Widget>[
             DrawerHeader(
-              child: Image.network('lib/imagens/logo1.jpg'),
+              child: Image.asset('lib/imagens/logo1.jpg'),
               decoration: BoxDecoration(
                 color: Colors.grey[850],
               ),

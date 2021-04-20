@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
 
 class CadastroTela extends StatefulWidget {
@@ -30,20 +32,22 @@ class _CadastroTelaState extends State<CadastroTela> {
                 children: [
                   Icon(
                     Icons.assignment,
-                    color: Theme.of(context).primaryColor,
+                    color: Colors.yellow,
                     size: 160,
                   ),
                   SizedBox(height: 20),
                   TextField(
                     controller: txtNome,
                     decoration: InputDecoration(
-                      icon: Icon(Icons.person_outline),
-                      hintText: "Informe o nome",
+                      labelText: "Informe o nome",
+                      labelStyle: TextStyle(color: Colors.white),
                     ),
                   ),
                   RadioListTile(
-	                  title: Text("Cliente"),
-	                  subtitle: Text("Escolha uma opção"),
+	                  title: Text("Cliente", style: TextStyle(color: Colors.white)),
+	                  subtitle: Text("Escolha uma opção", style: TextStyle(color: Colors.white)),
+                    
+                    activeColor: Colors.yellow,
 	                  value: "C",
 	                  groupValue: empresapessoa,
 	                  onChanged: (String valor){
@@ -53,8 +57,9 @@ class _CadastroTelaState extends State<CadastroTela> {
 	                  }
                   ),
                   RadioListTile(
-	                  title: Text("Empresa"),
-	                  subtitle: Text("Escolha uma opção"),
+	                  title: Text("Empresa", style: TextStyle(color: Colors.white)),
+	                  subtitle: Text("Escolha uma opção", style: TextStyle(color: Colors.white)),
+                    
                     activeColor: Colors.yellow,
 	                  value: "E",
 	                  groupValue: empresapessoa,
@@ -68,40 +73,40 @@ class _CadastroTelaState extends State<CadastroTela> {
                   TextField(
                     controller: txtCpfCnpj,
                     decoration: InputDecoration(
-                      icon: Icon(Icons.lock_outline),
                       labelText: 'Informe Cpf ou Cnpj',
+                      labelStyle: TextStyle(color: Colors.white)
                     ),
                   ),
                   SizedBox(height: 30),
                   TextField(
                     controller: txtTelefone,
                     decoration: InputDecoration(
-                      icon: Icon(Icons.lock_outline),
                       labelText: 'Informe o telefone',
+                      labelStyle: TextStyle(color: Colors.white),
                     ),
                   ),
                   SizedBox(height: 30),
                   TextField(
                     controller: txtCelular,
                     decoration: InputDecoration(
-                      icon: Icon(Icons.lock_outline),
                       labelText: 'Informe o celular',
+                      labelStyle: TextStyle(color: Colors.white),
                     ),
                   ),
                   SizedBox(height: 30),
                   TextField(
                     controller: txtLogin,
                     decoration: InputDecoration(
-                      icon: Icon(Icons.lock_outline),
                       labelText: 'Informe o login',
+                      labelStyle: TextStyle(color: Colors.white),
                     ),
                   ),
                   SizedBox(height: 30),
                   TextField(
                     controller: txtSenha,
                     decoration: InputDecoration(
-                      icon: Icon(Icons.lock_outline),
                       labelText: 'Informe a senha',
+                      labelStyle: TextStyle(color: Colors.white),
                     ),
                     obscureText: true,
                   ),
@@ -109,8 +114,8 @@ class _CadastroTelaState extends State<CadastroTela> {
                   TextField(
                     controller: txtSenhaConf,
                     decoration: InputDecoration(
-                      icon: Icon(Icons.lock_outline),
                       labelText: 'Informe a senha novamente',
+                      labelStyle: TextStyle(color: Colors.white),
                     ),
                     obscureText: true,
                   ),
@@ -120,13 +125,20 @@ class _CadastroTelaState extends State<CadastroTela> {
                     width: double.infinity,
                     height: 70,
                     child: ElevatedButton.icon(
+                      style: ButtonStyle(backgroundColor:MaterialStateProperty.resolveWith<Color>(
+                        (Set<MaterialState> states){
+                          if(states.contains(MaterialState.pressed))
+                          return Colors.yellow[700];
+                          return Colors.yellow[600];
+                        }, 
+                      )),
                       label: Text(
-                        'Entrar',
+                        'Cadastrar',
                         style: TextStyle(fontSize: 24),
                       ),
-                      icon: Icon(Icons.login),
+                      icon: Icon(Icons.app_registration),
                       onPressed: () {
-                        
+                        Navigator.pop(context);
                         
                       },
                     ),

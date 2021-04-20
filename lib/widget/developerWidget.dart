@@ -4,7 +4,7 @@ class DeveloperWidget extends StatelessWidget {
   final String nome;
   final String foto;
 
-  DeveloperWidget(this.nome, this.foto);//Construtor
+  DeveloperWidget(this.nome, this.foto); //Construtor
 
   @override
   Widget build(BuildContext context) {
@@ -25,20 +25,17 @@ class DeveloperWidget extends StatelessWidget {
           border: Border.all(color: Colors.grey[600], width: 2),
           borderRadius: BorderRadius.all(Radius.circular(10)),
           gradient: LinearGradient(
-            colors: [Colors.grey[400], Colors.white, Colors.grey[400]],
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter
-          )
-          ),
+              colors: [Colors.grey[400], Colors.white, Colors.grey[400]],
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter)),
       child: Column(
         children: [
           Text(
-            marca,
-            style: Theme.of(context).textTheme.headline2,
-          ),
-          Text(
-            modelo,
-            style: Theme.of(context).textTheme.headline3,
+            nome,
+            style: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+            ),
           ),
           Image.asset(foto)
         ],

@@ -65,6 +65,7 @@ class _PrimeiraTelaState extends State<PrimeiraTela> {
                       labelText: 'Insira o Usuário',
                       labelStyle: TextStyle(color: Colors.yellow),
                     ),
+                    style: TextStyle(color: Colors.white),
                   ),
                   SizedBox(height: 30),
                   TextField(
@@ -75,6 +76,7 @@ class _PrimeiraTelaState extends State<PrimeiraTela> {
                       labelStyle: TextStyle(color: Colors.yellow),
                      
                     ),
+                    style: TextStyle(color: Colors.white),
                     obscureText: true,
                   ),
                   SizedBox(height: 20),
@@ -121,7 +123,7 @@ class _PrimeiraTelaState extends State<PrimeiraTela> {
               Navigator.pushNamed(context, '/cadastro');
           },
           icon: Icon(Icons.add),
-          label: Text('Cadastrar Pessoas'),
+          label: Text('Cadastrar'),
           backgroundColor: Colors.yellow,
         ),
         );

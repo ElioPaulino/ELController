@@ -30,7 +30,6 @@ class SobreTela extends StatelessWidget {
                     Navigator.pushNamed(context, '/list1');
                   },
                   //hoverColor: Colors.blue[100],
-                  hoverColor: Colors.blue[100],
 
                 ),
                 SizedBox(height: 20),
@@ -46,7 +45,7 @@ class SobreTela extends StatelessWidget {
                           fontStyle: FontStyle.italic)),
                   onTap: () {
                     },
-                 hoverColor: Colors.blue[100],
+                // hoverColor: Colors.blue[100],
                 ),
                 SizedBox(height: 20),
                 Text("Desenvolvedores", style: TextStyle(color: Colors.yellow, fontSize: 27)),

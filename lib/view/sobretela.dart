@@ -25,9 +25,7 @@ class SobreTela extends StatelessWidget {
                           color: Colors.white,
                           fontStyle: FontStyle.italic)),
                   onTap: () {
-                    print('item pressionado');
-                    Navigator.pushNamed(context, '/list1');
-                  },
+                    },
                   hoverColor: Colors.blue[100],
                 ),
                 SizedBox(height: 20),
@@ -42,10 +40,8 @@ class SobreTela extends StatelessWidget {
                           color: Colors.white,
                           fontStyle: FontStyle.italic)),
                   onTap: () {
-                    print('item pressionado');
-                    Navigator.pushNamed(context, '/list1');
-                  },
-                  hoverColor: Colors.blue[100],
+                    },
+                 hoverColor: Colors.blue[100],
                 ),
                 SizedBox(height: 20),
                 Text("Desenvolvedores", style: TextStyle(color: Colors.yellow, fontSize: 27)),

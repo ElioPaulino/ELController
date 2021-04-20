@@ -14,6 +14,7 @@ class _HomeTelaState extends State<HomeTela> {
       appBar: AppBar(
         title: Text("Menu"),
         centerTitle: true,
+        backgroundColor: Colors.grey[850],
       ),
       drawer: Drawer(
         // Add a ListView to the drawer. This ensures the user can scroll
@@ -24,12 +25,17 @@ class _HomeTelaState extends State<HomeTela> {
           padding: EdgeInsets.zero,
           children: <Widget>[
             DrawerHeader(
-              child: Text('Drawer Header'),
+              child: Image.network('lib/imagens/logo1.jpg'),
               decoration: BoxDecoration(
-                color: Colors.blue,
+                color: Colors.grey[850],
               ),
             ),
             ListTile(
+              trailing: Icon(
+                Icons.assignment,
+                color: Colors.black,
+                size: 30,
+              ),
               title: Text('Sobre'),
               onTap: () {
                 Navigator.pushNamed(context, '/sobre');
@@ -54,7 +60,7 @@ class _HomeTelaState extends State<HomeTela> {
       ),
       body: Container(
         padding: EdgeInsets.all(40),
-
+        color: Colors.grey[850],
         //
         // LISTVIEW
         //
@@ -70,7 +76,7 @@ class _HomeTelaState extends State<HomeTela> {
             Icon(Icons.menu, size: 120, color: Colors.grey),
             SizedBox(height: 40),
             ListTile(
-              trailing: Icon(Icons.build, color: Colors.grey),
+              trailing: Icon(Icons.build, color: Colors.yellow),
               title: Text('Configuração',
                   style: TextStyle(fontSize: 26, color: Colors.grey)),
               subtitle: Text('Configure o seu perfil. ',
@@ -82,7 +88,7 @@ class _HomeTelaState extends State<HomeTela> {
                 print('item pressionado');
                 Navigator.pushNamed(context, '/list1');
               },
-              hoverColor: Colors.blue[100],
+              hoverColor: Colors.yellow,
             ),
           ],
         ),

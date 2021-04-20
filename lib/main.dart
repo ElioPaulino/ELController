@@ -8,7 +8,7 @@ import 'model/usuario.dart';
 void main() {
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
-    title: 'App Fila Virtual',
+    title: 'EL Controller',
 
     //ROTAS DE NAVEGAÇÃO
     initialRoute: '/primeira',
@@ -20,8 +20,8 @@ void main() {
     },
     //Tema
     theme: ThemeData(
-      primaryColor: Colors.blue[500],
-      backgroundColor: Colors.white,
+      primaryColor: Colors.grey[850],
+      backgroundColor: Colors.grey[850],
       fontFamily: 'Roboto', //Raleway
       textTheme: TextTheme(
         headline1: TextStyle(fontSize: 30),
@@ -53,25 +53,25 @@ class _PrimeiraTelaState extends State<PrimeiraTela> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(
-                    Icons.supervised_user_circle,
-                    color: Theme.of(context).primaryColor,
-                    size: 160,
-                  ),
-                  SizedBox(height: 20),
+                  Image.network('lib/imagens/logo1.jpg'),
+                  //
+                  SizedBox(height: 30),
                   TextField(
                     controller: txtLogin,
                     decoration: InputDecoration(
-                      icon: Icon(Icons.person_outline),
-                      hintText: "Insira o usuário",
+                      icon: Icon(Icons.person_outline, color: Colors.yellow),
+                      labelText: 'Insira o Usuário',
+                      labelStyle: TextStyle(color: Colors.yellow),
                     ),
                   ),
                   SizedBox(height: 30),
                   TextField(
                     controller: txtSenha,
                     decoration: InputDecoration(
-                      icon: Icon(Icons.lock_outline),
+                      icon: Icon(Icons.lock_outline, color: Colors.yellow),
                       labelText: 'Senha',
+                      labelStyle: TextStyle(color: Colors.yellow),
+                     
                     ),
                     obscureText: true,
                   ),
@@ -81,6 +81,13 @@ class _PrimeiraTelaState extends State<PrimeiraTela> {
                     width: double.infinity,
                     height: 70,
                     child: ElevatedButton.icon(
+                      style: ButtonStyle(backgroundColor:MaterialStateProperty.resolveWith<Color>(
+                        (Set<MaterialState> states){
+                          if(states.contains(MaterialState.pressed))
+                          return Colors.yellow[700];
+                          return Colors.yellow[600];
+                        }, 
+                      )),
                       label: Text(
                         'Entrar',
                         style: TextStyle(fontSize: 24),

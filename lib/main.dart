@@ -42,7 +42,6 @@ class PrimeiraTela extends StatefulWidget {
 class _PrimeiraTelaState extends State<PrimeiraTela> {
   var txtLogin = TextEditingController();
   var txtSenha = TextEditingController();
-  //Atributo para identificar unicamente o formulário
   var _formId = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {

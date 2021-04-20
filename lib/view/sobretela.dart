@@ -28,7 +28,7 @@ class SobreTela extends StatelessWidget {
                     print('item pressionado');
                     Navigator.pushNamed(context, '/list1');
                   },
-                  hoverColor: Colors.blue[100],
+                  //hoverColor: Colors.blue[100],
                 ),
                 SizedBox(height: 20),
                 ListTile(

@@ -14,18 +14,24 @@ class _HomeEmpresaTelaState extends State<HomeEmpresaTela> {
       appBar: AppBar(
         title: Text("Menu Empresa"),
         centerTitle: true,
+        backgroundColor: Colors.grey[850],
       ),
       drawer: Drawer(
         child: ListView(
           padding: EdgeInsets.zero,
           children: <Widget>[
             DrawerHeader(
-              child: Text('Drawer Header'),
+              child: Image.asset('lib/imagens/logo1.jpg'),
               decoration: BoxDecoration(
-                color: Colors.blue,
+                color: Colors.grey[850],
               ),
             ),
             ListTile(
+              trailing: Icon(
+                Icons.assignment,
+                color: Colors.black,
+                size: 30,
+              ),
               title: Text('Sobre'),
               onTap: () {
                 Navigator.pushNamed(context, '/sobre');
@@ -50,6 +56,7 @@ class _HomeEmpresaTelaState extends State<HomeEmpresaTela> {
       ),
       body: Container(
         padding: EdgeInsets.all(40),
+        color: Colors.grey[850],
 
         //
         // LISTVIEW
@@ -66,19 +73,19 @@ class _HomeEmpresaTelaState extends State<HomeEmpresaTela> {
             Icon(Icons.menu, size: 120, color: Colors.grey),
             SizedBox(height: 40),
             ListTile(
-              trailing: Icon(Icons.build, color: Colors.grey),
+              trailing: Icon(Icons.build, color: Colors.yellow),
               title: Text('Configuração',
-                  style: TextStyle(fontSize: 26, color: Colors.grey)),
+                  style: TextStyle(fontSize: 26, color: Colors.white)),
               subtitle: Text('Configure o seu perfil. ',
                   style: TextStyle(
                       fontSize: 14,
-                      color: Colors.grey,
+                      color: Colors.white,
                       fontStyle: FontStyle.italic)),
               onTap: () {
                 print('item pressionado');
                 Navigator.pushNamed(context, '/list1');
               },
-              hoverColor: Colors.blue[100],
+              hoverColor: Colors.yellow,
             ),
           ],
         ),

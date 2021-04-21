@@ -87,17 +87,17 @@ class _HomeFuncionarioTelaState extends State<HomeFuncionarioTela> {
             SizedBox(height: 40),
             ListTile(
               trailing: Icon(Icons.qr_code, color: Colors.yellow),
-              title: Text('Gerar QrCode',
+              title: Text('Ler QrCode',
                   style: TextStyle(fontSize: 26, color: Colors.yellow)),
               subtitle: Text(
-                  'Gerar um QrCode para pode entrar no estabelecimento.',
+                  'Ler QrCode para pode entrar no estabelecimento.',
                   style: TextStyle(
                       fontSize: 14,
                       color: Colors.white,
                       fontStyle: FontStyle.italic)),
               onTap: () {
-                print('item pressionado');
-                Navigator.pushNamed(context, '/gerarqrcodetela');
+              //  print('item pressionado');
+                Navigator.pushNamed(context, '/lerqrcodetela');
               },
               hoverColor: Colors.yellow,
             ),

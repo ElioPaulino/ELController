@@ -5,6 +5,7 @@ import 'package:appeliolucas/view/sobretela.dart';
 import 'package:appeliolucas/view/cadastrotela.dart';
 import 'package:appeliolucas/view/gerarqrcodetela.dart';
 import 'package:appeliolucas/view/lerqrcodetela.dart';
+import 'package:appeliolucas/view/listaPessoas.dart';
 import 'package:flutter/material.dart';
 
 import 'model/usuario.dart';
@@ -25,6 +26,7 @@ void main() {
       '/homefuncionario': (context) => HomeFuncionarioTela(),
       '/gerarqrcodetela': (context) => GerarQrCode(),
       '/lerqrcodetela': (context) => LerQrCode(),
+      '/listapessoas': (context) => ListaPessoas(),
     },
     //Tema
     theme: ThemeData(

@@ -25,21 +25,41 @@ class _HomeLerQrCode extends State<LerQrCode> {
           title: Text("Ler QrCode"),
           centerTitle: true,
         ),
+        backgroundColor: Theme.of(context).backgroundColor,
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Text('$barcode'),
-
+              Column(children: [Image.asset('lib/imagens/logo1.jpg')]),
+              Row(
+                children: [
+                  Text(
+                    'O numero do QrCode lido é: ',
+                    style: TextStyle(
+                      fontSize: 18,
+                      color: Colors.white,
+                    ),
+                  ),
+                  Text(
+                    '$barcode',
+                    style: TextStyle(
+                      fontSize: 25,
+                      color: Colors.yellow,
+                    ),
+       
+                  ),
+                ],
+              )
             ],
           ),
         ),
         floatingActionButton: FloatingActionButton.extended(
-          onPressed: (){
+          onPressed: () {
             scanBarcode();
           },
           label: Text("Scan"),
           icon: Icon(Icons.qr_code_scanner),
+          backgroundColor: Colors.yellow,
         ));
   }
 }

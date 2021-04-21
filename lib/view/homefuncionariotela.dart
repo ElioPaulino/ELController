@@ -17,11 +17,7 @@ class _HomeFuncionarioTelaState extends State<HomeFuncionarioTela> {
         backgroundColor: Colors.grey[850],
       ),
       drawer: Drawer(
-        // Add a ListView to the drawer. This ensures the user can scroll
-        // through the options in the drawer if there isn't enough vertical
-        // space to fit everything.
         child: ListView(
-          // Important: Remove any padding from the ListView.
           padding: EdgeInsets.zero,
           children: <Widget>[
             DrawerHeader(
@@ -96,7 +92,6 @@ class _HomeFuncionarioTelaState extends State<HomeFuncionarioTela> {
                       color: Colors.white,
                       fontStyle: FontStyle.italic)),
               onTap: () {
-              //  print('item pressionado');
                 Navigator.pushNamed(context, '/lerqrcodetela');
               },
               hoverColor: Colors.yellow,
@@ -111,8 +106,7 @@ class _HomeFuncionarioTelaState extends State<HomeFuncionarioTela> {
                       color: Colors.white,
                       fontStyle: FontStyle.italic)),
               onTap: () {
-                print('item pressionado');
-                Navigator.pushNamed(context, '/list1');
+                Navigator.pushNamed(context, '/listapessoas');
               },
               hoverColor: Colors.yellow,
             ),
@@ -126,7 +120,6 @@ class _HomeFuncionarioTelaState extends State<HomeFuncionarioTela> {
                       color: Colors.white,
                       fontStyle: FontStyle.italic)),
               onTap: () {
-                print('item pressionado');
                 Navigator.pushNamed(context, '/list1');
               },
               hoverColor: Colors.yellow,

@@ -142,6 +142,7 @@ class _HomeEmpresaTelaState extends State<HomeEmpresaTela> {
                               hintText: 'Informe o limite de pessoas'),
                         ),
                         actions: [
+                          
                           SizedBox(
                             width: 120.0,
                             child: RaisedButton(

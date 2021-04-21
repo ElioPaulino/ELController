@@ -66,23 +66,64 @@ class _HomeFuncionarioTelaState extends State<HomeFuncionarioTela> {
         //
         child: ListView(
           children: [
+            Row(children: [
             Text(
-              'Bem vindo ${user.login}!',
+              'Bem vindo ',
               style: TextStyle(
                   fontSize: 25,
-                  color: Colors.black,
+                  color: Colors.white,),
+            ),
+            Text(
+              '${user.login}!',
+              style: TextStyle(
+                  fontSize: 25,
+                  color: Colors.yellow,
                   fontStyle: FontStyle.italic),
             ),
+
+            ],),
+
             Icon(Icons.menu, size: 120, color: Colors.grey),
             SizedBox(height: 40),
             ListTile(
-              trailing: Icon(Icons.build, color: Colors.yellow),
-              title: Text('Configuração',
-                  style: TextStyle(fontSize: 26, color: Colors.grey)),
-              subtitle: Text('Configure o seu perfil. ',
+              trailing: Icon(Icons.qr_code, color: Colors.yellow),
+              title: Text('Gerar QrCode',
+                  style: TextStyle(fontSize: 26, color: Colors.yellow)),
+              subtitle: Text(
+                  'Gerar um QrCode para pode entrar no estabelecimento.',
                   style: TextStyle(
                       fontSize: 14,
-                      color: Colors.grey,
+                      color: Colors.white,
+                      fontStyle: FontStyle.italic)),
+              onTap: () {
+                print('item pressionado');
+                Navigator.pushNamed(context, '/gerarqrcodetela');
+              },
+              hoverColor: Colors.yellow,
+            ),
+            ListTile(
+              trailing: Icon(Icons.check_circle_outline_sharp, color: Colors.yellow),
+              title: Text('Lista de pessoas',
+                  style: TextStyle(fontSize: 26, color: Colors.yellow)),
+              subtitle: Text('Lista de pessoas dentro do estabelecimento.',
+                  style: TextStyle(
+                      fontSize: 14,
+                      color: Colors.white,
+                      fontStyle: FontStyle.italic)),
+              onTap: () {
+                print('item pressionado');
+                Navigator.pushNamed(context, '/list1');
+              },
+              hoverColor: Colors.yellow,
+            ),
+            ListTile(
+              trailing: Icon(Icons.assignment_turned_in, color: Colors.yellow),
+              title: Text('alterar cadastro',
+                  style: TextStyle(fontSize: 26, color: Colors.yellow)),
+              subtitle: Text('Faz alteração do seu cadastro',
+                  style: TextStyle(
+                      fontSize: 14,
+                      color: Colors.white,
                       fontStyle: FontStyle.italic)),
               onTap: () {
                 print('item pressionado');

@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:appeliolucas/model/usuario.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -65,20 +67,29 @@ class _HomeEmpresaTelaState extends State<HomeEmpresaTela> {
         //
         child: ListView(
           children: [
+            Row(children: [
+              
             Text(
-              'Bem vindo ${user.login}!',
+              'Bem vindo ',
               style: TextStyle(
                   fontSize: 25,
-                  color: Colors.white,
+                  color: Colors.white,),
+            ),
+            Text(
+              '${user.login}!',
+              style: TextStyle(
+                  fontSize: 25,
+                  color: Colors.yellow,
                   fontStyle: FontStyle.italic),
             ),
+             ],),
             Icon(Icons.menu, size: 120, color: Colors.grey),
             SizedBox(height: 40),
             ListTile(
               trailing: Icon(Icons.assignment_ind, color: Colors.yellow),
               title: Text('Cadastro funcionario',
                   style: TextStyle(fontSize: 26, color: Colors.yellow)),
-              subtitle: Text('Configure o seu perfil. ',
+              subtitle: Text('Cadastre um novo funcionário em seu estabelecimento ',
                   style: TextStyle(
                       fontSize: 14,
                       color: Colors.white,
@@ -93,7 +104,7 @@ class _HomeEmpresaTelaState extends State<HomeEmpresaTela> {
               trailing: Icon(Icons.assignment_turned_in, color: Colors.yellow),
               title: Text('alterar cadastro',
                   style: TextStyle(fontSize: 26, color: Colors.yellow)),
-              subtitle: Text('Configure o seu perfil. ',
+              subtitle: Text('Faz alteração do seu cadastro',
                   style: TextStyle(
                       fontSize: 14,
                       color: Colors.white,
@@ -108,7 +119,7 @@ class _HomeEmpresaTelaState extends State<HomeEmpresaTela> {
               trailing: Icon(Icons.emoji_people_sharp, color: Colors.yellow),
               title: Text('Limite de pessoas',
                   style: TextStyle(fontSize: 26, color: Colors.yellow)),
-              subtitle: Text('Configure o seu perfil. ',
+              subtitle: Text('Ajuste o limite de pessoas dentro do estabelecimento. ',
                   style: TextStyle(
                       fontSize: 14,
                       color: Colors.white,

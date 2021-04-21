@@ -5,7 +5,10 @@ class SobreTela extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Sobre"),),
+        appBar: AppBar(
+          title: Text("Sobre"),
+          centerTitle: true,
+        ),
         backgroundColor: Theme.of(context).backgroundColor,
         body: SingleChildScrollView(
           child: Container(
@@ -15,7 +18,7 @@ class SobreTela extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 ListTile(
-                  leading: Icon(Icons.label, color: Colors.yellow),                  
+                  leading: Icon(Icons.label, color: Colors.yellow),
                   title: Text('Tema escolhido',
                       style: TextStyle(fontSize: 20, color: Colors.yellow)),
                   subtitle: Text(
@@ -25,16 +28,14 @@ class SobreTela extends StatelessWidget {
                           color: Colors.white,
                           fontStyle: FontStyle.italic)),
                   onTap: () {
-
                     print('item pressionado');
                     Navigator.pushNamed(context, '/list1');
                   },
                   //hoverColor: Colors.blue[100],
-
                 ),
                 SizedBox(height: 20),
                 ListTile(
-                  leading: Icon(Icons.label, color: Colors.yellow),                  
+                  leading: Icon(Icons.label, color: Colors.yellow),
                   title: Text('Objetivo do aplicativo',
                       style: TextStyle(fontSize: 20, color: Colors.yellow)),
                   subtitle: Text(
@@ -43,15 +44,17 @@ class SobreTela extends StatelessWidget {
                           fontSize: 14,
                           color: Colors.white,
                           fontStyle: FontStyle.italic)),
-                  onTap: () {
-                    },
-                // hoverColor: Colors.blue[100],
+                  onTap: () {},
+                  // hoverColor: Colors.blue[100],
                 ),
                 SizedBox(height: 20),
-                Text("Desenvolvedores", style: TextStyle(color: Colors.yellow, fontSize: 27)),
-                DeveloperWidget("Elio Antonio Paulino Junior", "lib/imagens/Elio.jpg"),
+                Text("Desenvolvedores",
+                    style: TextStyle(color: Colors.yellow, fontSize: 27)),
+                DeveloperWidget(
+                    "Elio Antonio Paulino Junior", "lib/imagens/Elio.jpg"),
                 SizedBox(height: 20),
-                DeveloperWidget("Lucas da Cunha Alves", "lib/imagens/Lucas.jpeg"),
+                DeveloperWidget(
+                    "Lucas da Cunha Alves", "lib/imagens/Lucas.jpeg"),
               ],
             ),
           ),

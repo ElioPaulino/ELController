@@ -1,6 +1,11 @@
+import 'package:appeliolucas/view/alterarcadastrotela.dart';
+import 'package:appeliolucas/view/cadastrofuncionariotela.dart';
+import 'package:appeliolucas/view/funcionariotela.dart';
+import 'package:appeliolucas/view/historicovisitatela.dart';
 import 'package:appeliolucas/view/homeempresatela.dart';
 import 'package:appeliolucas/view/homefuncionariotela.dart';
 import 'package:appeliolucas/view/hometela.dart';
+import 'package:appeliolucas/view/listafuncionariotela.dart';
 import 'package:appeliolucas/view/sobretela.dart';
 import 'package:appeliolucas/view/cadastrotela.dart';
 import 'package:appeliolucas/view/gerarqrcodetela.dart';
@@ -27,6 +32,11 @@ void main() {
       '/gerarqrcodetela': (context) => GerarQrCode(),
       '/lerqrcodetela': (context) => LerQrCode(),
       '/listapessoas': (context) => ListaPessoas(),
+      '/cadastrofuncionariotela': (context) => CadastroFuncionarioTela(),
+      '/alterarcadastro': (context) => AlterarCadastroTela(),
+      '/historicovisita': (context) => HistoricoVisitaTela(),
+      '/listafuncionario': (context) => ListaFuncionario(),
+      '/funcionario': (context) =>Funcionario(),
     },
     //Tema
     theme: ThemeData(
@@ -111,15 +121,22 @@ class _PrimeiraTelaState extends State<PrimeiraTela> {
                     onPressed: () {
                       var user = Usuario(txtLogin.text, txtSenha.text);
                       if (txtLogin.text == "testecliente") {
-                        Navigator.pushReplacementNamed(context, '/home',
-                            arguments: user);
+                        if (txtSenha.text == "123") {
+                          Navigator.pushReplacementNamed(context, '/home',
+                              arguments: user);
+                        }
                       } else if (txtLogin.text == "testeempresa") {
-                        Navigator.pushReplacementNamed(context, '/homeempresa',
-                            arguments: user);
-                      } else if (txtLogin.text == "testefuncionario") {
-                        Navigator.pushReplacementNamed(
-                            context, '/homefuncionario',
-                            arguments: user);
+                        if (txtSenha.text == "123") {
+                          Navigator.pushReplacementNamed(
+                              context, '/homeempresa',
+                              arguments: user);
+                        }
+                      } else if (txtLogin.text == "testefunc") {
+                        if (txtSenha.text == "123") {
+                          Navigator.pushReplacementNamed(
+                              context, '/homefuncionario',
+                              arguments: user);
+                        }
                       }
                     },
                   ),

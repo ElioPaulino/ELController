@@ -83,11 +83,11 @@ class _HomeEmpresaTelaState extends State<HomeEmpresaTela> {
                   fontStyle: FontStyle.italic),
             ),
              ],),
-            Icon(Icons.menu, size: 120, color: Colors.grey),
+            Icon(Icons.menu, size: 120, color: Colors.white),
             SizedBox(height: 40),
             ListTile(
               trailing: Icon(Icons.assignment_ind, color: Colors.yellow),
-              title: Text('Cadastro funcionario',
+              title: Text('Cadastro funcionário',
                   style: TextStyle(fontSize: 26, color: Colors.yellow)),
               subtitle: Text('Cadastre um novo funcionário em seu estabelecimento ',
                   style: TextStyle(
@@ -96,7 +96,7 @@ class _HomeEmpresaTelaState extends State<HomeEmpresaTela> {
                       fontStyle: FontStyle.italic)),
               onTap: () {
                 print('item pressionado');
-                Navigator.pushNamed(context, '/list1');
+                Navigator.pushNamed(context, '/cadastrofuncionariotela');
               },
               hoverColor: Colors.yellow,
             ),
@@ -111,7 +111,7 @@ class _HomeEmpresaTelaState extends State<HomeEmpresaTela> {
                       fontStyle: FontStyle.italic)),
               onTap: () {
                 print('item pressionado');
-                Navigator.pushNamed(context, '/list1');
+                Navigator.pushNamed(context, '/alterarcadastro');
               },
               hoverColor: Colors.yellow,
             ),
@@ -180,6 +180,21 @@ class _HomeEmpresaTelaState extends State<HomeEmpresaTela> {
                         ],
                       );
                     });
+              },
+              hoverColor: Colors.yellow,
+            ),
+            ListTile(
+              trailing: Icon(Icons.assignment_ind, color: Colors.yellow),
+              title: Text('Lista de funcionários',
+                  style: TextStyle(fontSize: 26, color: Colors.yellow)),
+              subtitle: Text('Veja os usuários cadastrados na sua empresa, e realiza alterações em seu perfil ',
+                  style: TextStyle(
+                      fontSize: 14,
+                      color: Colors.white,
+                      fontStyle: FontStyle.italic)),
+              onTap: () {
+                print('item pressionado');
+                Navigator.pushNamed(context, '/listafuncionario');
               },
               hoverColor: Colors.yellow,
             ),

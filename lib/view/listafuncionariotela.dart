@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 
-class HistoricoVisitaTela extends StatefulWidget {
+class ListaFuncionario extends StatefulWidget {
   @override
-  _HistoricoVisitaTelaState createState() => _HistoricoVisitaTelaState();
+  _ListaFuncionarioState createState() => _ListaFuncionarioState();
 }
 
-class _HistoricoVisitaTelaState extends State<HistoricoVisitaTela> {
+class _ListaFuncionarioState extends State<ListaFuncionario> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("Historico de visitas"),
+          title: Text("Lista de Funcionarios"),
           centerTitle: true,
         ),
         backgroundColor: Theme.of(context).backgroundColor,
@@ -23,16 +23,16 @@ class _HistoricoVisitaTelaState extends State<HistoricoVisitaTela> {
               children: [
                 ListTile(
                   leading: Icon(Icons.label, color: Colors.yellow),
-                  title: Text('Nome Loja',
+                  title: Text('Nome funcionário',
                       style: TextStyle(fontSize: 20, color: Colors.yellow)),
-                  subtitle: Text('Descrição de dia e hora.',
+                  subtitle: Text('Cargo: xxxxxxxxxxxxxxxxxxxxx.',
                       style: TextStyle(
                           fontSize: 14,
                           color: Colors.white,
                           fontStyle: FontStyle.italic)),
                   onTap: () {
                     print('item pressionado');
-                    Navigator.pushNamed(context, '/list1');
+                    Navigator.pushNamed(context, '/funcionario');
                   },
                   //hoverColor: Colors.blue[100],
                 ),

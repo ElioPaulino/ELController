@@ -1,4 +1,3 @@
-import 'package:appeliolucas/widget/developerWidget.dart';
 import 'package:flutter/material.dart';
 
 class ListaPessoas extends StatefulWidget {

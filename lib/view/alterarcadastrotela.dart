@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
 
-class CadastroFuncionarioTela extends StatefulWidget {
+class AlterarCadastroTela extends StatefulWidget {
   @override
-  _CadastroFuncionarioTelaState createState() =>
-      _CadastroFuncionarioTelaState();
+  _AlterarCadastroTelaState createState() => _AlterarCadastroTelaState();
 }
 
-class _CadastroFuncionarioTelaState extends State<CadastroFuncionarioTela> {
+class _AlterarCadastroTelaState extends State<AlterarCadastroTela> {
   var txtNome = TextEditingController();
   var txtCpfCnpj = TextEditingController();
   var txtTelefone = TextEditingController();
   var txtCelular = TextEditingController();
-  var txtEndereco = TextEditingController();
   var txtLogin = TextEditingController();
   var txtSenha = TextEditingController();
   var txtSenhaConf = TextEditingController();
@@ -40,7 +38,7 @@ class _CadastroFuncionarioTelaState extends State<CadastroFuncionarioTela> {
                     controller: txtNome,
                     decoration: InputDecoration(
                       focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.yellow)),
+                        borderSide: BorderSide(color: Colors.yellow)),
                       labelText: "Informe o nome",
                       labelStyle: TextStyle(color: Colors.white),
                     ),
@@ -50,18 +48,18 @@ class _CadastroFuncionarioTelaState extends State<CadastroFuncionarioTela> {
                   TextField(
                     controller: txtCpfCnpj,
                     decoration: InputDecoration(
-                        focusedBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: Colors.yellow)),
+                      focusedBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(color: Colors.yellow)),
                         labelText: 'Informe Cpf ou Cnpj',
                         labelStyle: TextStyle(color: Colors.white)),
-                    style: TextStyle(color: Colors.white),
+                        style: TextStyle(color: Colors.white),
                   ),
                   SizedBox(height: 30),
                   TextField(
                     controller: txtTelefone,
                     decoration: InputDecoration(
                       focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.yellow)),
+                        borderSide: BorderSide(color: Colors.yellow)),
                       labelText: 'Informe o telefone',
                       labelStyle: TextStyle(color: Colors.white),
                     ),
@@ -72,19 +70,8 @@ class _CadastroFuncionarioTelaState extends State<CadastroFuncionarioTela> {
                     controller: txtCelular,
                     decoration: InputDecoration(
                       focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.yellow)),
+                        borderSide: BorderSide(color: Colors.yellow)),
                       labelText: 'Informe o celular',
-                      labelStyle: TextStyle(color: Colors.white),
-                    ),
-                    style: TextStyle(color: Colors.white),
-                  ),
-                  SizedBox(height: 30),
-                  TextField(
-                    controller: txtEndereco,
-                    decoration: InputDecoration(
-                      focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.yellow)),
-                      labelText: 'Informe o endereço',
                       labelStyle: TextStyle(color: Colors.white),
                     ),
                     style: TextStyle(color: Colors.white),
@@ -94,7 +81,7 @@ class _CadastroFuncionarioTelaState extends State<CadastroFuncionarioTela> {
                     controller: txtLogin,
                     decoration: InputDecoration(
                       focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.yellow)),
+                        borderSide: BorderSide(color: Colors.yellow)),
                       labelText: 'Informe o login',
                       labelStyle: TextStyle(color: Colors.white),
                     ),
@@ -105,7 +92,7 @@ class _CadastroFuncionarioTelaState extends State<CadastroFuncionarioTela> {
                     controller: txtSenha,
                     decoration: InputDecoration(
                       focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.yellow)),
+                        borderSide: BorderSide(color: Colors.yellow)),
                       labelText: 'Informe a senha',
                       labelStyle: TextStyle(color: Colors.white),
                     ),
@@ -117,7 +104,7 @@ class _CadastroFuncionarioTelaState extends State<CadastroFuncionarioTela> {
                     controller: txtSenhaConf,
                     decoration: InputDecoration(
                       focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.yellow)),
+                        borderSide: BorderSide(color: Colors.yellow)),
                       labelText: 'Informe a senha novamente',
                       labelStyle: TextStyle(color: Colors.white),
                     ),
@@ -139,7 +126,7 @@ class _CadastroFuncionarioTelaState extends State<CadastroFuncionarioTela> {
                         },
                       )),
                       label: Text(
-                        'Cadastrar',
+                        'Alterar',
                         style: TextStyle(fontSize: 24),
                       ),
                       icon: Icon(Icons.app_registration),
@@ -150,6 +137,7 @@ class _CadastroFuncionarioTelaState extends State<CadastroFuncionarioTela> {
                           backgroundColor: Colors.yellow,
                         ));
                         Navigator.pop(context);
+
                       },
                     ),
                   )

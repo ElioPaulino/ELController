@@ -12,7 +12,7 @@ class _HomeFuncionarioTelaState extends State<HomeFuncionarioTela> {
     Usuario user = ModalRoute.of(context).settings.arguments;
     return Scaffold(
       appBar: AppBar(
-        title: Text("Menu Funcionario"),
+        title: Text("Menu Funcionário"),
         centerTitle: true,
         backgroundColor: Colors.grey[850],
       ),
@@ -79,7 +79,7 @@ class _HomeFuncionarioTelaState extends State<HomeFuncionarioTela> {
 
             ],),
 
-            Icon(Icons.menu, size: 120, color: Colors.grey),
+            Icon(Icons.menu, size: 120, color: Colors.white),
             SizedBox(height: 40),
             ListTile(
               trailing: Icon(Icons.qr_code, color: Colors.yellow),
@@ -96,34 +96,7 @@ class _HomeFuncionarioTelaState extends State<HomeFuncionarioTela> {
               },
               hoverColor: Colors.yellow,
             ),
-            ListTile(
-              trailing: Icon(Icons.check_circle_outline_sharp, color: Colors.yellow),
-              title: Text('Lista de pessoas',
-                  style: TextStyle(fontSize: 26, color: Colors.yellow)),
-              subtitle: Text('Lista de pessoas dentro do estabelecimento.',
-                  style: TextStyle(
-                      fontSize: 14,
-                      color: Colors.white,
-                      fontStyle: FontStyle.italic)),
-              onTap: () {
-                Navigator.pushNamed(context, '/listapessoas');
-              },
-              hoverColor: Colors.yellow,
-            ),
-            ListTile(
-              trailing: Icon(Icons.assignment_turned_in, color: Colors.yellow),
-              title: Text('alterar cadastro',
-                  style: TextStyle(fontSize: 26, color: Colors.yellow)),
-              subtitle: Text('Faz alteração do seu cadastro',
-                  style: TextStyle(
-                      fontSize: 14,
-                      color: Colors.white,
-                      fontStyle: FontStyle.italic)),
-              onTap: () {
-                Navigator.pushNamed(context, '/list1');
-              },
-              hoverColor: Colors.yellow,
-            ),
+            Text("Número de pessoas no mercado: ", style: TextStyle(color: Colors.yellow, fontSize: 26),),
           ],
         ),
       ),

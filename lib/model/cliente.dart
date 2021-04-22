@@ -3,7 +3,8 @@ class Cliente{
   final String cpfCnpj;
   final String telefone;
   final String celular;
+  final String endereco;
   final String login;
   final String senha;
-  Cliente(this.nome,this.cpfCnpj, this.telefone, this.celular, this.login, this.senha);
+  Cliente(this.nome,this.cpfCnpj, this.telefone, this.celular,this.endereco, this.login, this.senha);
 }

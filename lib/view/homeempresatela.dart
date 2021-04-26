@@ -202,7 +202,10 @@ class _HomeEmpresaTelaState extends State<HomeEmpresaTela> {
               hoverColor: Colors.yellow,
             ),
             SizedBox(height: 40),
-            Text("Número de pessoas no estabelecimento: x", style: TextStyle(color: Colors.yellow, fontSize: 26),),
+            Padding(padding: EdgeInsets.all(16.0),
+              child: Text("Número de pessoas no estabelecimento: x", style: TextStyle(color: Colors.yellow, fontSize: 26),),
+            )
+            
           ],
         ),
       ),

@@ -100,6 +100,7 @@ class _HomeEmpresaTelaState extends State<HomeEmpresaTela> {
               },
               hoverColor: Colors.yellow,
             ),
+            SizedBox(height: 40),
             ListTile(
               trailing: Icon(Icons.assignment_turned_in, color: Colors.yellow),
               title: Text('alterar cadastro',
@@ -115,6 +116,7 @@ class _HomeEmpresaTelaState extends State<HomeEmpresaTela> {
               },
               hoverColor: Colors.yellow,
             ),
+            SizedBox(height: 40),
             ListTile(
               trailing: Icon(Icons.emoji_people_sharp, color: Colors.yellow),
               title: Text('Limite de pessoas',
@@ -183,6 +185,7 @@ class _HomeEmpresaTelaState extends State<HomeEmpresaTela> {
               },
               hoverColor: Colors.yellow,
             ),
+            SizedBox(height: 40),
             ListTile(
               trailing: Icon(Icons.assignment_ind, color: Colors.yellow),
               title: Text('Lista de funcionários',
@@ -198,6 +201,8 @@ class _HomeEmpresaTelaState extends State<HomeEmpresaTela> {
               },
               hoverColor: Colors.yellow,
             ),
+            SizedBox(height: 40),
+            Text("Número de pessoas no estabelecimento: x", style: TextStyle(color: Colors.yellow, fontSize: 26),),
           ],
         ),
       ),

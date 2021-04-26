@@ -120,7 +120,7 @@ class _HomeTelaState extends State<HomeTela> {
             ),
             SizedBox(height: 40),
             ListTile(
-              trailing: Icon(Icons.qr_code, color: Colors.yellow),
+              trailing: Icon(Icons.assignment, color: Colors.yellow),
               title: Text('Alterar cadastro',
                   style: TextStyle(fontSize: 26, color: Colors.yellow)),
               subtitle: Text('Alterar dados do cadastro.',

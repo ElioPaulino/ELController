@@ -100,7 +100,6 @@ class _HomeFuncionarioTelaState extends State<HomeFuncionarioTela> {
             Padding(padding: EdgeInsets.all(16.0),
               child: Text("Número de pessoas no estabelecimento: x", style: TextStyle(color: Colors.yellow, fontSize: 26),),
             ),
-            Margin()
           ],
         ),
       ),

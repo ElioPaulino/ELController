@@ -132,7 +132,7 @@ class _AlterarCadastroTelaState extends State<AlterarCadastroTela> {
                       icon: Icon(Icons.app_registration),
                       onPressed: () {
                         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                          content: Text('Cadastro relizado com sucesso!!!'),
+                          content: Text('Cadastro alterado com sucesso!!!'),
                           duration: Duration(seconds: 2),
                           backgroundColor: Colors.yellow,
                         ));

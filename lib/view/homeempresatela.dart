@@ -13,7 +13,7 @@ class _HomeEmpresaTelaState extends State<HomeEmpresaTela> {
   var txtNumber = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    Usuario user = ModalRoute.of(context).settings.arguments;
+    Object? user = ModalRoute.of(context)!.settings.arguments;
     return Scaffold(
       appBar: AppBar(
         title: Text("Menu Empresa"),
@@ -76,7 +76,7 @@ class _HomeEmpresaTelaState extends State<HomeEmpresaTela> {
                   color: Colors.white,),
             ),
             Text(
-              '${user.login}!',
+              'Teste',
               style: TextStyle(
                   fontSize: 25,
                   color: Colors.yellow,

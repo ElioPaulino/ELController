@@ -16,7 +16,7 @@ class _CadastroFuncionarioTelaState extends State<CadastroFuncionarioTela> {
   var txtSenha = TextEditingController();
   var txtSenhaConf = TextEditingController();
   var _formId = GlobalKey<FormState>();
-  String empresapessoa;
+  late String empresapessoa;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -134,8 +134,8 @@ class _CadastroFuncionarioTelaState extends State<CadastroFuncionarioTela> {
                           MaterialStateProperty.resolveWith<Color>(
                         (Set<MaterialState> states) {
                           if (states.contains(MaterialState.pressed))
-                            return Colors.yellow[700];
-                          return Colors.yellow[600];
+                            return Colors.yellow.shade700;
+                          return Colors.yellow.shade600;
                         },
                       )),
                       label: Text(

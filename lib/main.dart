@@ -12,10 +12,14 @@ import 'package:appeliolucas/view/gerarqrcodetela.dart';
 import 'package:appeliolucas/view/lerqrcodetela.dart';
 import 'package:appeliolucas/view/listaPessoas.dart';
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 import 'model/usuario.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
     title: 'EL Controller',
@@ -48,6 +52,11 @@ void main() {
       ),
     ),
   ));
+  var db = FirebaseFirestore.instance;
+
+  /*db.collection('cafes').add({"nome": "Café Melita 500g", "preco": "R\$ 9,85"});*/
+
+  
 }
 
 class PrimeiraTela extends StatefulWidget {
@@ -109,8 +118,8 @@ class _PrimeiraTelaState extends State<PrimeiraTela> {
                         MaterialStateProperty.resolveWith<Color>(
                       (Set<MaterialState> states) {
                         if (states.contains(MaterialState.pressed))
-                          return Colors.yellow[700];
-                        return Colors.yellow[600];
+                          return Colors.yellow.shade700;
+                        return Colors.yellow.shade600;
                       },
                     )),
                     label: Text(

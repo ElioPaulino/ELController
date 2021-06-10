@@ -9,7 +9,7 @@ class HomeFuncionarioTela extends StatefulWidget {
 class _HomeFuncionarioTelaState extends State<HomeFuncionarioTela> {
   @override
   Widget build(BuildContext context) {
-    Usuario user = ModalRoute.of(context).settings.arguments;
+    Object? user = ModalRoute.of(context)!.settings.arguments;
     return Scaffold(
       appBar: AppBar(
         title: Text("Menu Funcionário"),
@@ -70,7 +70,7 @@ class _HomeFuncionarioTelaState extends State<HomeFuncionarioTela> {
                   color: Colors.white,),
             ),
             Text(
-              '${user.login}!',
+              'Teste',
               style: TextStyle(
                   fontSize: 25,
                   color: Colors.yellow,

@@ -22,10 +22,10 @@ class DeveloperWidget extends StatelessWidget {
       //BORDA
       decoration: BoxDecoration(
           color: Colors.yellow,
-          border: Border.all(color: Colors.yellow[400], width: 2),
+          border: Border.all(color: Colors.yellow.shade400, width: 2),
           borderRadius: BorderRadius.all(Radius.circular(10)),
           gradient: LinearGradient(
-              colors: [Colors.yellow[400], Colors.white, Colors.yellow[400]],
+              colors: [Colors.yellow.shade400, Colors.white, Colors.yellow.shade400],
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter)),
       child: Column(

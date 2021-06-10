@@ -31,9 +31,9 @@ class _FuncionarioState extends State<Funcionario> {
                 CheckboxListTile(
                   title: const Text('Ativo'),
                   value: checkBoxValue,
-                  onChanged: (bool value) {
+                  onChanged: (bool? value) {
                     setState(() {
-                      checkBoxValue = value;
+                      checkBoxValue = value!;
                     });
                   },
                   secondary:  Icon(Icons.person, color: Colors.black,),

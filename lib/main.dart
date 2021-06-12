@@ -14,6 +14,7 @@ import 'package:appeliolucas/view/listaPessoas.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 import 'model/usuario.dart';
 
@@ -68,6 +69,7 @@ class _PrimeiraTelaState extends State<PrimeiraTela> {
   var txtLogin = TextEditingController();
   var txtSenha = TextEditingController();
   var _formId = GlobalKey<FormState>();
+  bool isLoading = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -128,7 +130,11 @@ class _PrimeiraTelaState extends State<PrimeiraTela> {
                     ),
                     icon: Icon(Icons.login),
                     onPressed: () {
-                      var user = Usuario(txtLogin.text, txtSenha.text);
+                       setState(() {
+                    isLoading = true;
+                  });
+                  login(txtLogin.text,txtSenha.text);
+                      /*var user = Usuario(txtLogin.text, txtSenha.text);
                       if (txtLogin.text == "testecliente") {
                         if (txtSenha.text == "123") {
                           Navigator.pushReplacementNamed(context, '/home',
@@ -146,7 +152,7 @@ class _PrimeiraTelaState extends State<PrimeiraTela> {
                               context, '/homefuncionario',
                               arguments: user);
                         }
-                      }
+                      }*/
                     },
                   ),
                 )
@@ -164,5 +170,44 @@ class _PrimeiraTelaState extends State<PrimeiraTela> {
         backgroundColor: Colors.yellow,
       ),
     );
+  }
+
+  //
+  // LOGIN com Firebase Auth
+  //
+  void login(email, senha){
+
+    FirebaseAuth.instance.signInWithEmailAndPassword(
+      email: email, password: senha).then((resultado) {
+
+        isLoading = false;
+
+        /*Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context)=>TelaPrincipal(uid: resultado.user!.uid))
+        );*/
+
+    }).catchError((erro){
+
+      var errorCode = erro.code;
+      var mensagem = '';
+      if (errorCode == 'user-not-found'){
+        mensagem = 'Usuário não encontrado';
+      }else if (errorCode == 'wrong-password'){
+        mensagem = 'Senha inválida';
+      }else if (errorCode == 'invalid-email'){
+        mensagem = 'Email inválido';
+      }else{
+        mensagem = erro.message;
+      }
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('ERRO: $mensagem'),
+          duration: Duration(seconds: 2),
+        )
+      );
+
+    });
+
   }
 }

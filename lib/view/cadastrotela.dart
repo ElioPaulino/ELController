@@ -1,6 +1,7 @@
 import 'package:appeliolucas/model/cliente.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class CadastroTela extends StatefulWidget {
   @override
@@ -43,7 +44,6 @@ class _CadastroTelaState extends State<CadastroTela> {
   Widget build(BuildContext context) {
     //Recuperar o ID que foi passado como argumento
     var id = ModalRoute.of(context)?.settings.arguments;
-
     Cliente? cliente;
     if (id != null) {
       cliente = getDocumentById(id.toString());
@@ -144,6 +144,36 @@ class _CadastroTelaState extends State<CadastroTela> {
                     ),
                     style: TextStyle(color: Colors.white),
                   ),
+                  TextField(
+                    controller: txtEstado,
+                    decoration: InputDecoration(
+                      focusedBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: Colors.yellow)),
+                      labelText: 'Informe o estado',
+                      labelStyle: TextStyle(color: Colors.white),
+                    ),
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  TextField(
+                    controller: txtBairro,
+                    decoration: InputDecoration(
+                      focusedBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: Colors.yellow)),
+                      labelText: 'Informe o bairro',
+                      labelStyle: TextStyle(color: Colors.white),
+                    ),
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  TextField(
+                    controller: txtEndereco,
+                    decoration: InputDecoration(
+                      focusedBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: Colors.yellow)),
+                      labelText: 'Informe o endereço',
+                      labelStyle: TextStyle(color: Colors.white),
+                    ),
+                    style: TextStyle(color: Colors.white),
+                  ),
                   SizedBox(height: 30),
                   TextField(
                     controller: txtLogin,
@@ -199,31 +229,7 @@ class _CadastroTelaState extends State<CadastroTela> {
                       ),
                       icon: Icon(Icons.app_registration),
                       onPressed: () {
-                        var db = FirebaseFirestore.instance;
-                        if (cliente != null) {
-                          //Adicionar um novo documento
-
-                          db.collection('clientes').add({
-                            "nome": txtNome.text,
-                            "cpfCnpj": txtCpfCnpj.text,
-                            "telefone": txtTelefone.text,
-                            "celular": txtCelular.text,
-                            "estado": txtEstado.text,
-                            "bairro": txtBairro.text,
-                            "endereco": txtEndereco.text,
-                            "login": txtLogin.text,
-                            "senha": txtSenha.text
-                          });
-                        } else {
-                          //Atualizar um documento
-                          db.collection('clientes').doc(cliente!.id).update(cliente.toJson());
-                        }
-                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                          content: Text('Cadastro relizado com sucesso!!!'),
-                          duration: Duration(seconds: 2),
-                          backgroundColor: Colors.yellow,
-                        ));
-                        Navigator.pop(context);
+                        criarConta(txtNome.text, txtLogin.text, txtSenha.text);
                       },
                     ),
                   )
@@ -232,5 +238,44 @@ class _CadastroTelaState extends State<CadastroTela> {
             ),
           ),
         ));
+  }
+
+  //
+  // CRIAR CONTA no Firebase Auth
+  //
+  void criarConta(nome, email, senha) {
+    FirebaseAuth fa = FirebaseAuth.instance;
+
+    fa
+        .createUserWithEmailAndPassword(email: email, password: senha)
+        .then((resultado) {
+      //armazenar dados da conta no Firestore
+      var db = FirebaseFirestore.instance;
+      db.collection('usuarios').doc(resultado.user!.uid).set({
+        'nome': nome,
+        'email': email,
+      }).then((valor) {
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          content: Text('Usuário criado com sucesso.'),
+          duration: Duration(seconds: 2),
+        ));
+        Navigator.pop(context);
+      });
+    }).catchError((erro) {
+      var errorCode = erro.code;
+      //print(errorCode);
+
+      if (errorCode == 'email-already-in-use') {
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          content: Text('ERRO: O email informado já está em uso.'),
+          duration: Duration(seconds: 2),
+        ));
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          content: Text('ERRO ${erro.message}'),
+          duration: Duration(seconds: 2),
+        ));
+      }
+    });
   }
 }

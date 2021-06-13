@@ -1,8 +1,7 @@
-
-
 import 'package:appeliolucas/model/usuario.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class HomeEmpresaTela extends StatefulWidget {
   @override
@@ -11,9 +10,19 @@ class HomeEmpresaTela extends StatefulWidget {
 
 class _HomeEmpresaTelaState extends State<HomeEmpresaTela> {
   var txtNumber = TextEditingController();
+   var txtNome = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    Object? user = ModalRoute.of(context)!.settings.arguments;
+    //Recuperar o ID que foi passado como argumento
+    var id = ModalRoute.of(context)?.settings.arguments;
+    
+    
+      FirebaseFirestore.instance.collection('Empresas')
+      .doc(id.toString()).get().then((value) {
+        txtNome.text = value.data()!['nome'].toString();
+      }
+    );
+    
     return Scaffold(
       appBar: AppBar(
         title: Text("Menu Empresa"),
@@ -76,7 +85,7 @@ class _HomeEmpresaTelaState extends State<HomeEmpresaTela> {
                   color: Colors.white,),
             ),
             Text(
-              'Teste',
+              txtNome.text,
               style: TextStyle(
                   fontSize: 25,
                   color: Colors.yellow,

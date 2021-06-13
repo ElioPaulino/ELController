@@ -229,7 +229,17 @@ class _CadastroTelaState extends State<CadastroTela> {
                       ),
                       icon: Icon(Icons.app_registration),
                       onPressed: () {
-                        criarConta(txtNome.text, txtLogin.text, txtSenha.text);
+                        criarConta(
+                            txtNome.text,
+                            txtLogin.text,
+                            txtSenha.text,
+                            txtTelefone.text,
+                            txtCpfCnpj.text,
+                            txtCelular.text,
+                            txtEstado.text,
+                            txtBairro.text,
+                            txtEndereco.text,
+                            empresapessoa);
                       },
                     ),
                   )
@@ -243,24 +253,49 @@ class _CadastroTelaState extends State<CadastroTela> {
   //
   // CRIAR CONTA no Firebase Auth
   //
-  void criarConta(nome, email, senha) {
+  void criarConta(nome, email, senha, telefone, cpfcnpj, celular, estado,
+      bairro, endereco, tipo) {
     FirebaseAuth fa = FirebaseAuth.instance;
 
     fa
         .createUserWithEmailAndPassword(email: email, password: senha)
         .then((resultado) {
       //armazenar dados da conta no Firestore
-      var db = FirebaseFirestore.instance;
-      db.collection('usuarios').doc(resultado.user!.uid).set({
-        'nome': nome,
-        'email': email,
-      }).then((valor) {
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-          content: Text('Usuário criado com sucesso.'),
-          duration: Duration(seconds: 2),
-        ));
-        Navigator.pop(context);
-      });
+      if (tipo == 'C') {
+        var db = FirebaseFirestore.instance;
+        db.collection('Clientes').doc(resultado.user!.uid).set({
+          'nome': nome,
+          'cpfCnpj': cpfcnpj,
+          'telefone': telefone,
+          'celular': celular,
+          'estado': estado,
+          'bairro': bairro,
+          'endereco': endereco
+        }).then((valor) {
+          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+            content: Text('Usuário criado com sucesso.'),
+            duration: Duration(seconds: 2),
+          ));
+          Navigator.pop(context);
+        });
+      } else {
+        var db = FirebaseFirestore.instance;
+        db.collection('Empresas').doc(resultado.user!.uid).set({
+          'nome': nome,
+          'cpfCnpj': cpfcnpj,
+          'telefone': telefone,
+          'celular': celular,
+          'estado': estado,
+          'bairro': bairro,
+          'endereco': endereco
+        }).then((valor) {
+          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+            content: Text('Usuário criado com sucesso.'),
+            duration: Duration(seconds: 2),
+          ));
+          Navigator.pop(context);
+        });
+      }
     }).catchError((erro) {
       var errorCode = erro.code;
       //print(errorCode);

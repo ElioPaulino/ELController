@@ -1,5 +1,7 @@
 import 'package:appeliolucas/model/usuario.dart';
+import 'package:appeliolucas/model/cliente.dart';
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class HomeTela extends StatefulWidget {
   @override
@@ -7,9 +9,19 @@ class HomeTela extends StatefulWidget {
 }
 
 class _HomeTelaState extends State<HomeTela> {
+  var txtNome = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    Object? user = ModalRoute.of(context)!.settings.arguments;
+    //Recuperar o ID que foi passado como argumento
+    var id = ModalRoute.of(context)?.settings.arguments;
+    
+    
+      FirebaseFirestore.instance.collection('Clientes')
+      .doc(id.toString()).get().then((value) {
+        txtNome.text = value.data()!['nome'].toString();
+      }
+    );
+    
     return Scaffold(
       appBar: AppBar(
         title: Text("Menu"),
@@ -76,7 +88,7 @@ class _HomeTelaState extends State<HomeTela> {
                   ),
                 ),
                 Text(
-                  'Teste',
+                  txtNome.text,
                   style: TextStyle(
                       fontSize: 25,
                       color: Colors.yellow,

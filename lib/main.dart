@@ -1,3 +1,4 @@
+import 'package:appeliolucas/model/cliente.dart';
 import 'package:appeliolucas/view/alterarcadastrotela.dart';
 import 'package:appeliolucas/view/cadastrofuncionariotela.dart';
 import 'package:appeliolucas/view/funcionariotela.dart';
@@ -41,7 +42,7 @@ void main() async {
       '/alterarcadastro': (context) => AlterarCadastroTela(),
       '/historicovisita': (context) => HistoricoVisitaTela(),
       '/listafuncionario': (context) => ListaFuncionario(),
-      '/funcionario': (context) =>Funcionario(),
+      '/funcionario': (context) => Funcionario(),
     },
     //Tema
     theme: ThemeData(
@@ -56,8 +57,6 @@ void main() async {
   var db = FirebaseFirestore.instance;
 
   /*db.collection('cafes').add({"nome": "Café Melita 500g", "preco": "R\$ 9,85"});*/
-
-  
 }
 
 class PrimeiraTela extends StatefulWidget {
@@ -130,10 +129,10 @@ class _PrimeiraTelaState extends State<PrimeiraTela> {
                     ),
                     icon: Icon(Icons.login),
                     onPressed: () {
-                       setState(() {
-                    isLoading = true;
-                  });
-                  login(txtLogin.text,txtSenha.text);
+                      setState(() {
+                        isLoading = true;
+                      });
+                      login(txtLogin.text, txtSenha.text);
                       /*var user = Usuario(txtLogin.text, txtSenha.text);
                       if (txtLogin.text == "testecliente") {
                         if (txtSenha.text == "123") {
@@ -175,39 +174,60 @@ class _PrimeiraTelaState extends State<PrimeiraTela> {
   //
   // LOGIN com Firebase Auth
   //
-  void login(email, senha){
-
-    FirebaseAuth.instance.signInWithEmailAndPassword(
-      email: email, password: senha).then((resultado) {
-
-        isLoading = false;
-
-        /*Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(builder: (context)=>TelaPrincipal(uid: resultado.user!.uid))
-        );*/
-
-    }).catchError((erro){
-
+  void login(email, senha) {
+    FirebaseAuth.instance
+        .signInWithEmailAndPassword(email: email, password: senha)
+        .then((resultado) {
+      var isLoading = false;
+      FirebaseFirestore.instance
+          .collection('Clientes')
+          .doc(resultado.user!.uid)
+          .get()
+          .then((value) {
+        if (value.data()!['nome'].toString().isNotEmpty) {
+          Navigator.pushReplacementNamed(context, '/home',
+                              arguments: resultado.user!.uid);
+        }
+      });
+      FirebaseFirestore.instance
+          .collection('Empresas')
+          .doc(resultado.user!.uid)
+          .get()
+          .then((value) {
+        if (value.data()!['nome'].toString().isNotEmpty) {
+          Navigator.pushReplacementNamed(context, '/homeempresa',
+                              arguments: resultado.user!.uid);
+        }
+      });
+      /*FirebaseFirestore.instance
+          .collection('Clientes')
+          .doc(resultado.user!.uid)
+          .get()
+          .then((value) {
+        if (value.data()!['nome'].toString().isNotEmpty) {
+          Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                  builder: (context) =>
+                      HomeTela()));
+        }
+      });*/
+    }).catchError((erro) {
       var errorCode = erro.code;
       var mensagem = '';
-      if (errorCode == 'user-not-found'){
+      if (errorCode == 'user-not-found') {
         mensagem = 'Usuário não encontrado';
-      }else if (errorCode == 'wrong-password'){
+      } else if (errorCode == 'wrong-password') {
         mensagem = 'Senha inválida';
-      }else if (errorCode == 'invalid-email'){
+      } else if (errorCode == 'invalid-email') {
         mensagem = 'Email inválido';
-      }else{
+      } else {
         mensagem = erro.message;
       }
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text('ERRO: $mensagem'),
-          duration: Duration(seconds: 2),
-        )
-      );
-
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text('ERRO: $mensagem'),
+        duration: Duration(seconds: 2),
+      ));
     });
-
   }
 }

@@ -41,7 +41,7 @@ void main() async {
       '/cadastrofuncionariotela': (context) => CadastroFuncionarioTela(),
       '/alterarcadastro': (context) => AlterarCadastroTela(),
       '/historicovisita': (context) => HistoricoVisitaTela(),
-      '/listafuncionario': (context) => ListaFuncionario(),
+      '/listafuncionario': (context) => ListaFuncionario(uid: ''),
       '/funcionario': (context) => Funcionario(),
     },
     //Tema
@@ -199,19 +199,16 @@ class _PrimeiraTelaState extends State<PrimeiraTela> {
                               arguments: resultado.user!.uid);
         }
       });
-      /*FirebaseFirestore.instance
-          .collection('Clientes')
+      FirebaseFirestore.instance
+          .collection('Funcionario')
           .doc(resultado.user!.uid)
           .get()
           .then((value) {
         if (value.data()!['nome'].toString().isNotEmpty) {
-          Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(
-                  builder: (context) =>
-                      HomeTela()));
+          Navigator.pushReplacementNamed(context, '/homefuncionario',
+                              arguments: resultado.user!.uid);
         }
-      });*/
+      });
     }).catchError((erro) {
       var errorCode = erro.code;
       var mensagem = '';

@@ -104,7 +104,6 @@ class _HomeEmpresaTelaState extends State<HomeEmpresaTela> {
                       color: Colors.white,
                       fontStyle: FontStyle.italic)),
               onTap: () {
-                print('item pressionado');
                 Navigator.pushNamed(context, '/cadastrofuncionariotela');
               },
               hoverColor: Colors.yellow,
@@ -120,7 +119,6 @@ class _HomeEmpresaTelaState extends State<HomeEmpresaTela> {
                       color: Colors.white,
                       fontStyle: FontStyle.italic)),
               onTap: () {
-                print('item pressionado');
                 Navigator.pushNamed(context, '/alterarcadastro');
               },
               hoverColor: Colors.yellow,

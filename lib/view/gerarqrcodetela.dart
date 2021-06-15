@@ -52,7 +52,7 @@ class GerarQrCode extends StatelessWidget {
                         db.collection('presenca').add({
                           "nome": nomeCliente,
                           "qrCode": txtQrCode,
-                          "estabelecimento" : txtQrCode,
+                          "estabelecimento" : " ",
                           "data": data
                         });
             ScaffoldMessenger.of(context).showSnackBar(SnackBar(

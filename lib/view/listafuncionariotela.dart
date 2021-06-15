@@ -1,31 +1,34 @@
+import 'package:appeliolucas/model/funcionario.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 import 'package:flutter/material.dart';
 
+
+
 class ListaFuncionario extends StatefulWidget {
+
+  final String uid;
+  ListaFuncionario({required this.uid});
   @override
   _ListaFuncionarioState createState() => _ListaFuncionarioState();
 }
 
 class _ListaFuncionarioState extends State<ListaFuncionario> {
+  late CollectionReference funcionarios;
+
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: Text("Lista de Funcionarios"),
-          centerTitle: true,
-        ),
-        backgroundColor: Theme.of(context).backgroundColor,
-        body: SingleChildScrollView(
-          child: Container(
-            width: double.infinity,
-            padding: EdgeInsets.all(40),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                ListTile(
+  void initState() {
+    super.initState();
+    funcionarios = FirebaseFirestore.instance.collection('funcionarios');
+  }
+
+  Widget itemLista(item) {
+    Funcionario funcionario = Funcionario.fromJson(item.data(), item.id);
+    return ListTile(
                   leading: Icon(Icons.label, color: Colors.yellow),
-                  title: Text('Nome funcionário',
+                  title: Text(funcionario.nome,
                       style: TextStyle(fontSize: 20, color: Colors.yellow)),
-                  subtitle: Text('Cargo: xxxxxxxxxxxxxxxxxxxxx.',
+                  subtitle: Text(funcionario.cargo,
                       style: TextStyle(
                           fontSize: 14,
                           color: Colors.white,
@@ -35,11 +38,45 @@ class _ListaFuncionarioState extends State<ListaFuncionario> {
                     Navigator.pushNamed(context, '/funcionario');
                   },
                   //hoverColor: Colors.blue[100],
-                ),
-                SizedBox(height: 20),
-              ],
-            ),
-          ),
-        ));
+                );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+
+    return Scaffold(
+        appBar: AppBar(
+          title: Text("Lista de Funcionarios"),
+          centerTitle: true,
+        ),
+        backgroundColor: Theme.of(context).backgroundColor,
+
+              //Exibir os documentos
+      body: StreamBuilder<QuerySnapshot>(
+
+          //fonte de dados
+          stream: funcionarios.snapshots(),
+
+          //aparência
+          builder: (context, snapshot) {
+            switch (snapshot.connectionState) {
+              case ConnectionState.none:
+                return Center(child: Text('Erro ao conectar no Firebase'));
+
+              case ConnectionState.waiting:
+                return Center(child: CircularProgressIndicator());
+
+              default:
+                final dados = snapshot.requireData;
+
+                return ListView.builder(
+                    itemCount: dados.size,
+                    itemBuilder: (context, index) {
+                      return itemLista(dados.docs[index]);
+                    }
+                );
+            }
+          }),
+        );
   }
 }

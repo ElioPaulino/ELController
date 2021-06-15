@@ -6,8 +6,9 @@ import 'package:qr_flutter/qr_flutter.dart';
 
 
 class GerarQrCode extends StatelessWidget {
-  var txtQrCode = null;
-  var nomeCliente = null;
+  var txtQrCode = "Por favor gere o QrCode";
+  var nomeCliente = "";
+  var data = "";
   @override
   Widget build(BuildContext context) {
     //Recuperar o ID que foi passado como argumento
@@ -16,10 +17,10 @@ class GerarQrCode extends StatelessWidget {
     
       FirebaseFirestore.instance.collection('Clientes')
       .doc(id.toString()).get().then((value) {
-        nomeCliente.text = value.data()!['nome'].toString();
+        nomeCliente = value.data()!['nome'].toString();
       }
     );
-    
+
     return Scaffold(
         appBar: AppBar(
           title: Text("Gerar QrCode"),
@@ -36,6 +37,7 @@ class GerarQrCode extends StatelessWidget {
                 QrImage(
                   data: txtQrCode,
                   size: 300.0,
+                  
                 ),
               ],
             ),
@@ -43,24 +45,25 @@ class GerarQrCode extends StatelessWidget {
         ),
         floatingActionButton: FloatingActionButton.extended(
           onPressed: () {
-            
+          txtQrCode = "";
           txtQrCode = gerarNumero();
-
+          data = gerardata();
             var db = FirebaseFirestore.instance;
                         db.collection('presenca').add({
                           "nome": nomeCliente,
                           "qrCode": txtQrCode,
                           "estabelecimento" : txtQrCode,
-                          "data": txtQrCode
+                          "data": data
                         });
             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
               content: Text('O QrCode gerado com sucesso  $txtQrCode'),
               duration: Duration(seconds: 2),
               backgroundColor: Colors.black,
             ));
+            txtQrCode = "Por favor gere o QrCode";
           },
           icon: Icon(Icons.add),
-          label: Text('Gera um novo QRcode'),
+          label: Text('Gera o QRcode'),
           backgroundColor: Colors.black,
         ));
   }
@@ -71,4 +74,10 @@ class GerarQrCode extends StatelessWidget {
     int randomNumber = random.nextInt(100);
     return randomNumber.toString();
   }
+
+  String gerardata(){
+    var date = new DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day, DateTime.now().hour, DateTime.now().minute, DateTime.now().second, DateTime.now().microsecond);
+     return date.toString();
+  }
+
 }

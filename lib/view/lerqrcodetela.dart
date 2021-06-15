@@ -13,9 +13,19 @@ class _HomeLerQrCode extends State<LerQrCode> {
     final barcodeResult = await FlutterBarcodeScanner.scanBarcode(
         "#ff6666", "cancelar", true, ScanMode.QR);
 
+  if(barcodeResult == "Por favor gere o QrCode"){
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      content: Text('Por favor gere o QrCode'),
+      duration: Duration(seconds: 2),
+      backgroundColor: Colors.black,
+    ));
+    super.dispose();
+  }else{
     setState(() {
       barcode = barcodeResult;
     });
+  }
+
   }
 
   @override

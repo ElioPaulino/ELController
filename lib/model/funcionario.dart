@@ -23,8 +23,6 @@ class Funcionario{
     this.endereco = map['endereco'];
     this.cargo = map['cargo'];
     this.ativo = map['ativo'];
-    this.login = map['login'];
-    this.senha = map['senha'];
   }
 
   //Converter um OBJETO em um DOCUMENTO

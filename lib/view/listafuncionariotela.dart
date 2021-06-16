@@ -35,7 +35,7 @@ class _ListaFuncionarioState extends State<ListaFuncionario> {
                           fontStyle: FontStyle.italic)),
                   onTap: () {
                     print('item pressionado');
-                    Navigator.pushNamed(context, '/funcionario');
+                    Navigator.pushNamed(context, '/funcionario', arguments: item.id);
                   },
                   //hoverColor: Colors.blue[100],
                 );

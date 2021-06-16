@@ -141,7 +141,7 @@ class _HomeTelaState extends State<HomeTela> {
                       fontStyle: FontStyle.italic)),
               onTap: () {
                 print('item pressionado');
-                Navigator.pushNamed(context, '/alterarcadastro');
+                Navigator.pushNamed(context, '/alterarcadastro', arguments: id);
               },
               hoverColor: Colors.yellow,
             ),
